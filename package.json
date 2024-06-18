@@ -7,5 +7,8 @@
   },
   "author": "Deo Trinidad",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "sha256": "^0.2.0"
+  }
 }
