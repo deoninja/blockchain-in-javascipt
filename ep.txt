@@ -5,3 +5,4 @@
     8. Building POST register-node Endpoint
     9. Testing POST register-node Endpoint
     10. Building POST register-nodes-bulk Endpoint
+    11. Testing POST register-nodes-bulk Endpoint
