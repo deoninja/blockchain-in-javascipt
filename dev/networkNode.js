@@ -53,30 +53,74 @@ app.get('/mine', function (req, res) {
   });
 });
 
-// Register a node and broadcast it on the network
+// //register a node and broadcast it in the whole networks
+// app.post('/register-and-broadcast-node', function (req, res) {
+//   const newNodeUrl = req.body.newNodeUrl;
+//   if (bitcoin.networkNodes.indexOf(newNodeUrl) == -1) {
+//     bitcoin.networkNodes.push(newNodeUrl);
+//   }
+//   const regNodesPromises = [];
+//   bitcoin.networkNodes.forEach((networkNodeUrl) => {
+//     // register-node
+//     const requestOptions = {
+//       url: networkNodeUrl + '/register-node',
+//       method: 'post',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       data: { newNodeUrl: networkNodeUrl },
+//     };
+//     regNodesPromises.push(axios(requestOptions));
+//   });
+
+//   Promise.all(regNodesPromises)
+//     .then((data) => {
+//       const bulkRegisterOptions = {
+//         url: newNodeUrl + '/register-nodes-bulk',
+//         method: 'post',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         data: {
+//           allNetworkNodes: [...bitcoin.networkNodes, bitcoin.currentNodeUrl],
+//         },
+//       };
+//       return axios(bulkRegisterOptions);
+//     })
+//     .then((data) => {
+//       res.json({ note: 'New node registered with network successfully' });
+//     });
+// });
 app.post('/register-and-broadcast-node', function (req, res) {
   const newNodeUrl = req.body.newNodeUrl;
-  if (bitcoin.networkNodes.indexOf(newNodeUrl) == -1)
+  if (bitcoin.networkNodes.indexOf(newNodeUrl) == -1) {
     bitcoin.networkNodes.push(newNodeUrl);
+  }
 
   const regNodesPromises = [];
   bitcoin.networkNodes.forEach((networkNodeUrl) => {
-    const requestOptions = {
-      url: networkNodeUrl + '/register-node',
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: { newNodeUrl: networkNodeUrl },
-    };
-    regNodesPromises.push(axios(requestOptions));
+    if (networkNodeUrl !== newNodeUrl) {
+      // Skip sending to the new node itself
+      const requestOptions = {
+        url: networkNodeUrl + '/register-node',
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: { newNodeUrl },
+      };
+      regNodesPromises.push(axios(requestOptions));
+    }
   });
 
-  Promise.all(regNodesPromises)
-    .then((data) => {
+  Promise.all(regNodesPromises) // Use Promise.all for error handling (optional)
+    .then(() => {
       const bulkRegisterOptions = {
         url: newNodeUrl + '/register-nodes-bulk',
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         data: {
           allNetworkNodes: [...bitcoin.networkNodes, bitcoin.currentNodeUrl],
         },
@@ -85,6 +129,10 @@ app.post('/register-and-broadcast-node', function (req, res) {
     })
     .then((data) => {
       res.json({ note: 'New node registered with network successfully' });
+    })
+    .catch((error) => {
+      console.error('Error during registration:', error);
+      res.status(500).json({ error: 'Registration failed' }); // Handle errors
     });
 });
 
@@ -93,8 +141,9 @@ app.post('/register-node', function (req, res) {
   const newNodeUrl = req.body.newNodeUrl;
   const nodeNotAlreadyPresent = bitcoin.networkNodes.indexOf(newNodeUrl) == -1;
   const notCurrentNode = bitcoin.currentNodeUrl !== newNodeUrl;
-  if (nodeNotAlreadyPresent && notCurrentNode)
+  if (nodeNotAlreadyPresent && notCurrentNode) {
     bitcoin.networkNodes.push(newNodeUrl);
+  }
   res.json({ note: 'New node registered successfully' });
 });
 
@@ -108,7 +157,8 @@ app.post('/register-nodes-bulk', function (req, res) {
     if (nodeNotAlreadyPresent && notCurrentNode)
       bitcoin.networkNodes.push(networkNodeUrl);
   });
-  res.json({ note: 'Bulk registration successful' });
+
+  res.json({ note: 'Bulk registration successful.' });
 });
 
 app.listen(port, function () {

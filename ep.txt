@@ -6,3 +6,4 @@
     9. Testing POST register-node Endpoint
     10. Building POST register-nodes-bulk Endpoint
     11. Testing POST register-nodes-bulk Endpoint
+    12. Testing All Network Endpoints
