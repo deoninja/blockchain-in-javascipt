@@ -1,2 +1,3 @@
 4. Creating A Decentralized Blockchain Network
     5. New Endpoints Outline
+    6. Building POST register-and-broadcast-node Endpoint - Part 1
