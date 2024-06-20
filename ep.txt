@@ -3,3 +3,4 @@
     6. Building POST register-and-broadcast-node Endpoint - Part 1
     7. Building POST register-and-broadcast-node Endpoint - Part 2
     8. Building POST register-node Endpoint
+    9. Testing POST register-node Endpoint

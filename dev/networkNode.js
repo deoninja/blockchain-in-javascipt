@@ -111,7 +111,7 @@ app.post('/register-node', function (req, res) {
   const notCurrentNode = bitcoin.currentNodeUrl !== newNodeUrl;
   if (nodeNotAlreadyPresent && notCurrentNode)
     bitcoin.networkNodes.push(newNodeUrl);
-  res.json({ note: 'New node registered successfully with node' + newNodeUrl });
+  res.json({ note: 'New node registered successfully' });
 });
 
 // register multiple nodes at once
