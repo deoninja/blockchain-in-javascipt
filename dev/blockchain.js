@@ -104,6 +104,8 @@ Blockchain.prototype.chainIsValid = function (blockchain) {
     if (currentBlock['previousBlockHash'] !== prevBlock['hash']) {
       validChain = false;
     }
+    console.log('previousBlockhash =>', prevBlock['hash']);
+    console.log('currentBlockHash =>', currentBlock['hash']);
   }
   const genesisBlock = blockchain[0];
   const correctNonce = genesisBlock['nonce'] === 100;

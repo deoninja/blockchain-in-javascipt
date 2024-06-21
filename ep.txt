@@ -23,4 +23,5 @@
 6. Consensus
     1. Consensus Introduction
     2. Chain Is Valid Method
+    3. Testing Chain Is Valid Method
     
