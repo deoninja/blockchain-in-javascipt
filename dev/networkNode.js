@@ -103,6 +103,21 @@ app.get('/mine', function (req, res) {
   });
 });
 
+app.post('/receive-new-block', function (req, res) {
+  const newBlock = req.body.newBlock;
+  const lastBlock = bitcoin.getLastBlock();
+  const correctHash = lastBlock.hash === newBlock.previousBlockHash;
+  const correctIndex = lastBlock['index'] + 1 === newBlock['index'];
+
+  if (correctHash && correctIndex) {
+    bitcoin.chain.push(newBlock);
+    bitcoin.pendingTransactions = [];
+    res.json({ note: 'New block received and accepted', newBlock: newBlock });
+  } else {
+    res.json({ note: 'New block rejected', newBlock: newBlock });
+  }
+});
+
 // //register a node and broadcast it in the whole networks
 // app.post('/register-and-broadcast-node', function (req, res) {
 //   const newNodeUrl = req.body.newNodeUrl;

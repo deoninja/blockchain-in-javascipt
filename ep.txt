@@ -17,3 +17,4 @@
     6. Testing Transaction Endpoints 
     7. Updating Mining Information
     8. Updating Mining Endpoint
+    9. Building POST receive-new-block Endpoint
