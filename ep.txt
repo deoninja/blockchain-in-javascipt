@@ -7,3 +7,8 @@
     10. Building POST register-nodes-bulk Endpoint
     11. Testing POST register-nodes-bulk Endpoint
     12. Testing All Network Endpoints
+
+5. Synchronizing The Network
+    1. Synchronizing The Network - Introduction
+    2. Transactions Introduction
+    3. Refactoring Create Transaction Method
