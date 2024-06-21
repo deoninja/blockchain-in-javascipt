@@ -19,3 +19,8 @@
     8. Updating Mining Endpoint
     9. Building POST receive-new-block Endpoint
     10. Testing New Endpoints
+
+6. Consensus
+    1. Consensus Introduction
+    2. Chain Is Valid Method
+    
