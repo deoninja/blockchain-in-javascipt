@@ -77,30 +77,30 @@ app.get('/mine', function (req, res) {
       url: networkNodeUrl + '/receive-new-block',
       method: 'post',
       data: {
-        newBlock,
+        newBlock: newBlock,
       },
     };
     requestPromises.push(axios(requestOptions));
-    Promise.all(requestPromises)
-      .then((data) => {
-        const requestOptions = {
-          url: bitcoin.currentNodeUrl + '/transaction/broadcast',
-          method: 'post',
-          data: {
-            amount: 12.5,
-            sender: '00',
-            recipient: nodeAddress,
-          },
-        };
-        return axios(requestOptions);
-      })
-      .then((data) => {
-        res.json({
-          note: 'New block mined and broadcast successfully',
-          block: newBlock,
-        });
-      });
   });
+  Promise.all(requestPromises)
+    .then((data) => {
+      const requestOptions = {
+        url: bitcoin.currentNodeUrl + '/transaction/broadcast',
+        method: 'post',
+        data: {
+          amount: 12.5,
+          sender: '00',
+          recipient: nodeAddress,
+        },
+      };
+      return axios(requestOptions);
+    })
+    .then((data) => {
+      res.json({
+        note: 'New block mined and broadcast successfully',
+        block: newBlock,
+      });
+    });
 });
 
 app.post('/receive-new-block', function (req, res) {
