@@ -14,3 +14,6 @@
     3. Refactoring Create Transaction Method
     4. Building POST transactionbroadcast Endpoint
     5. Refactoring POST transaction Endpoint
+    6. Testing Transaction Endpoints 
+    7. Updating Mining Information
+    8. Updating Mining Endpoint
