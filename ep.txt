@@ -13,3 +13,4 @@
     2. Transactions Introduction
     3. Refactoring Create Transaction Method
     4. Building POST transactionbroadcast Endpoint
+    5. Refactoring POST transaction Endpoint
