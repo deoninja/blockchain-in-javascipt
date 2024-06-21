@@ -12,3 +12,4 @@
     1. Synchronizing The Network - Introduction
     2. Transactions Introduction
     3. Refactoring Create Transaction Method
+    4. Building POST transactionbroadcast Endpoint
