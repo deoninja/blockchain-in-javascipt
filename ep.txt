@@ -25,4 +25,5 @@
     2. Chain Is Valid Method
     3. Testing Chain Is Valid Method
     4. Building GET consensus Endpoint
+    5. Testing GET consensus Endpoint
     
