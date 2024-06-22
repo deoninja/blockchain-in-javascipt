@@ -305,7 +305,17 @@ app.get('/transaction/:transactionId', function (req, res) {
   });
 });
 
-app.get('/address/:addresss', function (req, res) {});
+app.get('/address/:addresss', function (req, res) {
+  const address = req.params.addresss;
+  const addressData = bitcoin.getAddressData(address);
+  res.json({
+    addressData: addressData,
+  });
+});
+
+app.get('/block-explorer', function (req, res) {
+  res.sendFile('./block-explorer/index.html', { root: __dirname });
+});
 
 app.listen(port, function () {
   console.log(`Listening on port ${port}....`);

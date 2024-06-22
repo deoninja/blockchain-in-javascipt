@@ -35,6 +35,7 @@
     5. Get Transaction Method
     6. Building GET transactiontransactionId Endpoint
     7. Get Address Data Method
-
+    8. Building GET addressaddress Endpoint
+    9. Adding The Block Explorer File
 
     
