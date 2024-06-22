@@ -37,5 +37,7 @@
     7. Get Address Data Method
     8. Building GET addressaddress Endpoint
     9. Adding The Block Explorer File
+    11. Block Explorer File Explanation
+    12. Testing The Block Explorer!
 
     
