@@ -31,6 +31,7 @@
     1. Block Explorer Introduction
     2. Block Explorer Endpoints Outline
     3. Get Block Method
+    4. Building GET blockblockHash Endpoint
 
 
     
