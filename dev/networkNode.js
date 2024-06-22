@@ -296,7 +296,14 @@ app.get('/block/:blockHash', function (req, res) {
   });
 });
 
-app.get('/transaction/:transactionId', function (req, res) {});
+app.get('/transaction/:transactionId', function (req, res) {
+  const transactionId = req.params.transactionId;
+  const transactionData = bitcoin.getTransaction(transactionId);
+  res.json({
+    transaction: transactionData.transaction,
+    block: transactionData.block,
+  });
+});
 
 app.get('/address/:addresss', function (req, res) {});
 

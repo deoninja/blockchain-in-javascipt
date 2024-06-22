@@ -33,6 +33,7 @@
     3. Get Block Method
     4. Building GET blockblockHash Endpoint
     5. Get Transaction Method
+    6. Building GET transactiontransactionId Endpoint
 
 
     
