@@ -30,6 +30,7 @@
 7. Block Explorer
     1. Block Explorer Introduction
     2. Block Explorer Endpoints Outline
+    3. Get Block Method
 
 
     
