@@ -26,4 +26,10 @@
     3. Testing Chain Is Valid Method
     4. Building GET consensus Endpoint
     5. Testing GET consensus Endpoint
+
+7. Block Explorer
+    1. Block Explorer Introduction
+    2. Block Explorer Endpoints Outline
+
+
     
